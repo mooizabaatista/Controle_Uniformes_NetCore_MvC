@@ -1,0 +1,46 @@
+﻿<!-- Import model -->
+@model Requisicao_RSS.Application.DTOs.FuncionarioDTO
+<!-- Header -->
+<div class="row">
+    <div class="col-12 mt-3 mb-3">
+        <h2 class="text-danger" style="font-weight: 200">Deseja realmente remover?</h2>
+    </div>
+</div>
+<!-- Informações sobre o funcionário -->
+<div>
+    <span class="col-sm-2">
+        <strong>Registro: </strong> @Model.Registro
+    </span>
+    <br />
+    <span class="col-sm-2">
+        <strong>Nome: </strong> @Model.Nome
+    </span>
+    <hr />
+    <div class="row">
+        <div class="col-2">
+            <form asp-action="Remove">
+
+                <!-- Id funcionário -->
+                <input type="hidden" asp-for="FuncionarioId" />
+
+                <!-- Ações -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <button type="submit" class="btn btn-danger d-flex btn-acoes ">
+                                    <span class="mr-1">Remover</span>
+                                    <i class="material-icons" style="font-size:15px;color:white;">delete</i>
+                                </button>
+                                <div class="btn btn-dark d-flex btn-acoes ml-3">
+                                    <a style="color:#fff;" asp-action="Index"><span class="mr-1">Cancelar</span></a>
+                                    <i class="material-icons" style="font-size:14px;color:white;">clear</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+﻿<!-- Import model-->
+@model IEnumerable<Requisicao_RSS.Application.DTOs.RetiradaMaterialDTO>
+
+<!-- Header-->
+<div class="row">
+    <div class="col-12 mt-3">
+        <h2 style="font-weight: 200"> Saída de materiais</h2>
+    </div>
+</div>
+
+<hr />
+
+<!-- Pesquisar retirada de material por data específica -->
+<div class="row">
+    <div class="col-3 mt-3">
+        @using (Html.BeginForm("GetDataRetiradas", "RetiradaMateriais", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-10">
+                    <input class="form-control" type="date" id="data" name="data">
+                </div>
+                <div class="col-2">
+                    <input class="btn btn-primary" type="submit" value="Filtrar">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr />
+
+<!-- Exibe as informações sobre as retiradas de materiais -->
+<div class="row">
+    <div class="col-12 mt-3">
+
+        <table class="table table-bordered table-sm text-center">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    @if (Model.Any(c => c.Tipo == "Uniforme"))
+                    {
+                        <th>Quantidade Camisas</th>
+                        <th>Quantidade Calças</th>
+                    }
+                    @if (Model.Any(c => c.Tipo == "Luva"))
+                    {
+                        <th>Quantidade Luvas</th>
+                    }
+                <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomeFornecedor)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                    @if (Model.Any(c => c.Tipo == "Uniforme"))
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.QuantidadeCamisas)</td>
+                        <td>@Html.DisplayFor(modelItem => item.QuantidadeCalcas)</td>
+                    }
+                    @if (Model.Any(c => c.Tipo == "Luva"))
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.QuantidadeLuvas)</td>
+                    }
+
+                    <!-- Ações -->
+                    <td>
+                        <!-- Editar -->
+                        <a asp-action="Edit" asp-route-id="@item.RetiradaMaterialId" class="btn btn-sm btn-dark">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <!-- Cancelar -->
+                        <a asp-action="Remove" asp-route-id="@item.RetiradaMaterialId" class="btn btn-sm btn-danger">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

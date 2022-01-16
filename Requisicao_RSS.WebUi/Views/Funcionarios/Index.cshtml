@@ -1,0 +1,111 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Bootstrap4.Core
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model X.PagedList.PagedList<Requisicao_RSS.Application.DTOs.FuncionarioDTO>
+<!-- Header -->
+<div class="row">
+    <div class="col-12 mt-3">
+        <h2 style="font-weight: 200">Funcionários</h2>
+    </div>
+</div>
+<hr />
+
+<!-- Cadastrar um funcionário -->
+<div class="row">
+    <div class="col-md-3 col-6 mb-4">
+        <a class="btn btn-primary d-flex align-items-center justify-content-center" asp-action="Create">
+            <span class="mr-1">Cadastrar Funcionário</span>
+            <i class="material-icons p-r-3" style="font-size:20px;color:white;">add</i>
+        </a>
+    </div>
+</div>
+
+
+
+
+<!-- Formulário de consulta -->
+<div class="row">
+    <div class="col-3 mt-3">
+        @using (Html.BeginForm("GetFuncionario", "Funcionarios", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control" type="text" id="registro" name="registro" placeholder="Digite o registro">
+                </div>
+                <div class="col-md-3">
+                    <input class="btn btn-primary" type="submit" value="Filtrar">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />
+
+@if (ViewBag.xCondition != 1)
+{
+    <div class="row">
+        <div class="col-12">
+            <span class="font-weight-light">Página @Model.PageNumber de @Model.PageCount</span>
+            <div class="mt-2 btn-sm">
+                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }.ApplyBootstrap4Style())
+            </div>
+        </div>
+    </div>
+}
+
+
+<!-- Tabela com a lista de funcionários -->
+<div class="row">
+    <div class="col-12 mt-3">
+        <div class="panel">
+            <table class="table table-bordered table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Registro</th>
+                        <th>Nome</th>
+                        <th>Função</th>
+                        <th>Turno</th>
+                        <th>Camiseta</th>
+                        <th>Calça</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Registro)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Funcao)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Turno)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BaseCamisa)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BaseCalca)</td>
+
+                            <!-- Ações -->
+                            <td style="width:220px;">
+                                <a asp-controller="Requisicoes" asp-action="Create" asp-route-id="@item.FuncionarioId" class="btn btn-sm btn-primary btn-add" data-toggle="tooltip" data-placement="top" title="Nova Requisição">
+                                    <i class="material-icons">add</i>
+                                </a>
+
+                                <a asp-Controller="Funcionarios" asp-action="Details" asp-route-id="@item.FuncionarioId" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Lista de Requisições">
+                                    <i class="material-icons">feed</i>
+                                </a>
+
+                                <a asp-controller="Funcionarios" asp-action="Edit" asp-route-id="@item.FuncionarioId" class="btn btn-sm btn-dark" data-toggle="tooltip" data-placement="top" title="Editar Funcionário">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a asp-controller="Funcionarios" asp-action="Remove" asp-route-id="@item.FuncionarioId" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Remover Funcionário">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

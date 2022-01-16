@@ -1,0 +1,43 @@
+﻿<!-- Import model-->
+@model Requisicao_RSS.Application.DTOs.RequisicaoDTO
+<!-- Header-->
+<div class="row">
+    <div class="col-12 mt-3 mb-3">
+        <h2 class="text-danger" style="font-weight: 200">Deseja realmente remover?</h2>
+    </div>
+</div>
+
+<!-- Informações sobre a requisição -->
+<div>
+    <span class="col-sm-2">
+        <strong>Nome: </strong> @ViewBag.NomeFuncionario
+    </span><br />
+    <span class="col-sm-2">
+        <strong>Registro: </strong> @Model.Registro
+    </span>
+    <br />
+    <span class="col-sm-2">
+        <strong>Data: </strong> @Html.DisplayFor(c => c.Data)
+    </span>
+    <hr />
+    <div class="row">
+        <!-- Ações -->
+        <div class="col-2">
+            <form asp-action="Remove">
+                <input type="hidden" asp-for="RequisicaoId" />
+                <div class="form-group d-flex justify-content-around">
+                    <!-- Remover -->
+                    <button type="submit" class="btn btn-danger d-flex align-items-center justify-content-around p-l-3  btn-acoes">
+                        <span class="mr-2">Remover</span>
+                        <i class="material-icons" style="font-size:15px;color:white;">delete</i>
+                    </button>
+                    <!-- Cancelar -->
+                    <div class="btn btn-dark d-flex align-items-center btn-acoes ml-3">
+                        <a style="color:#fff;" asp-controller="Funcionarios" asp-action="Details" asp-route-id="@Model.FuncionarioId"><span class="mr-1">Cancelar</span></a>
+                        <i class="material-icons" style="font-size:15px;color:white;">clear</i>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

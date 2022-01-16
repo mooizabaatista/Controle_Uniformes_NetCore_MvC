@@ -1,0 +1,39 @@
+﻿<!-- import model -->
+@model Requisicao_RSS.Application.DTOs.RetiradaMaterialDTO
+<!-- header -->
+<div class="row">
+    <div class="col-12 mt-3 mb-2">
+        <h3 style="font-weight: 100;">Detalhes da retirada</h3>
+    </div>
+    <div class="col-3 col-md-1 mb-4">
+        <a asp-controller="Fornecedores" asp-action="ListaRetiradas" asp-route-id="@Model.FornecedorId" class="d-flex align-items-center justify-content-center btn btn-primary btn-sm "><i class="material-icons" style="font-size:15px;color:#fff;">arrow_back_ios</i>Voltar</a>
+    </div>
+</div>
+
+
+
+<!-- Conteúdo -->
+<div class="row">
+    <div class="col-12">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Data da entrega: </strong> @Html.DisplayFor(c => c.Data)</li>
+            <li class="list-group-item"><strong>Nome: </strong> @Model.NomeFornecedor</li>
+            <li class="list-group-item"><strong>Tipo de entrega: </strong> @Model.Tipo</li>
+            <!-- Exibe a quantidade de luvas caso o tipo de entregas seja luvas-->
+            @if (Model.Tipo.ToString().ToLower() == "luva")
+            {
+                <li class="list-group-item"><strong>Quantidade Luvas: </strong> @Model.QuantidadeLuvas</li>
+            }
+            <!-- Exibe a quantidade de camisetas e calças caso o tipo de entregas seja uniformes -->
+            @if (Model.Tipo.ToString().ToLower() == "uniforme")
+            {
+                <li class="list-group-item"><strong>Quantidade Camisas: </strong> @Model.QuantidadeCamisas</li>
+                <li class="list-group-item"><strong>Quantidade Calças: </strong> @Model.QuantidadeCalcas</li>
+            }
+            @if (Model.Divergencia.ToString().ToLower() == "sim")
+            {
+                <li class="list-group-item text-danger"><strong>Observações: </strong> @Model.Observacoes</li>
+            }
+        </ul>
+    </div>
+</div>

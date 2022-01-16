@@ -1,0 +1,151 @@
+﻿<!-- Import model -->
+@model Requisicao_RSS.Application.DTOs.FuncionarioDTO
+<!-- Header -->
+<div class="row">
+    <div class="col-12 mt-4 text-center">
+        <h3 style="font-weight: 200; letter-spacing:5px;">Controle de Materiais - RSS</h3>
+    </div>
+</div>
+
+<hr style="width: 50%;" />
+
+
+<div class="row">
+    <div class="offset-1"></div>
+    <div class="col-md-3 col-xs-12 mt-5">
+        <!-- Card com a quantidade de funcionários DIURNO -->
+        <div class="card bg-success">
+            <div class=" header-card text-center text-white" style="height:35px">
+                FUNCIONARIOS DIURNO
+            </div>
+            <hr style="border: solid thin #FFF;" />
+            <div class="card-body text-center text-white" style="height:60px">
+                <span>@ViewBag.TotalDiurno</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-12 mt-5">
+        <!-- Card com a quantidade de funcionários NOTURNO -->
+        <div class="card bg-primary">
+            <div class=" header-card text-center text-white" style="height:35px">
+                FUNCIONARIOS NOTURNO
+            </div>
+            <hr style="border: solid thin #FFF;" />
+            <div class="card-body text-center text-white" style="height:60px">
+                <span>@ViewBag.TotalNoturno</span>
+            </div>
+        </div>
+    </div>
+    <!-- Formulário de consulta -->
+    <div class="col-md-4  mt-5">
+        <div>
+            <form asp-action="GetFuncionario" method="POST" id="frmGetFuncionarios">
+                <div class="form-group">
+                    <!-- Registro -->
+                    <input asp-for="Registro" class="form-control" placeholder="Digite a Matrícula" name="registro" id="txtRegistro" style="width:80%;" />
+                </div>
+
+                <div class="form-group">
+                    <!-- Pesquisar -->
+                    <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-around" style="width:130px;">
+                        <span>Pesquisar</span>
+                        <i class="material-icons" style="font-size:20px;color:white;">search</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Caso não haja pesquisa, exibe as requisições do dia -->
+@if (Model.Registro == null)
+{
+    <h4 class="font-weight-light mt-5 mb-4 ml-4 text-center">Requisições - @DateTime.Now.ToShortDateString()</h4>
+    <hr  style="width:40%;"/>
+
+    <table class="table table-bordered text-center" style="overflow:hidden">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Registro</th>
+                <th>Nome</th>
+                <th>Tamanho Camiseta</th>
+                <th>Tamanho Calça</th>
+                <th>Quantidade Luvas</th>
+                <th>Divergência</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Requisicoes)
+
+            {
+                <tr>
+                    <td>@item.Data.ToShortDateString()</td>
+                    <td>@item.Registro</td>
+                    <td>@item.Funcionario.Nome</td>
+                    <td>@item.TamanhoCamisa</td>
+                    <td>@item.TamanhoCalca</td>
+                    <td>@item.QuantidadeLuva</td>
+                    <td>@item.Divergencia</td>
+                    
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    
+}
+
+
+<!-- Informações das requisições do dia, caso não haja pesquisa de funcionário -->
+@if (Model.Registro != null)
+{
+    <div class="row">
+        <div class="col-12 mt-5 table-responsive">
+            <table class="table table-bordered table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Registro</th>
+                        <th>Nome</th>
+                        <th>Função</th>
+                        <th>Turno</th>
+                        <th>Base Camisa</th>
+                        <th>Base Calça</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Registro</td>
+                        <td>@Model.Nome</td>
+                        <td>@Model.Funcao</td>
+                        <td>@Model.Turno</td>
+                        <td>@Model.BaseCamisa</td>
+                        <td>@Model.BaseCalca</td>
+                        
+                        <td style="width:220px;">
+                            <!-- Adicionar nova requisição -->
+                            <a asp-controller="Requisicoes" asp-action="Create" asp-route-id="@Model.FuncionarioId" class="btn btn-sm btn-primary btn-add"  data-toggle="tooltip" data-placement="bottom" title="Adicionar Requisição">
+                                <i class="material-icons">add</i>
+                            </a>
+                            <!-- Lista de todas as requisições do funcionário -->
+                            <a asp-controller="Funcionarios" asp-action="Details" asp-route-id="@Model.FuncionarioId" class="btn btn-sm btn-info"  data-toggle="tooltip" data-placement="bottom" title="Lista de Requisições">
+                                <i class="material-icons">feed</i>
+                            </a>
+                            <!-- Editar funcionário -->
+                            <a asp-controller="Funcionarios" asp-action="Edit" asp-route-id="@Model.FuncionarioId" class="btn btn-sm btn-dark"  data-toggle="tooltip" data-placement="bottom" title="Editar Funcionário">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <!-- Remover funcionário -->
+                            <a asp-controller="Funcionarios" asp-action="Remove" asp-route-id="@Model.FuncionarioId" class="btn btn-sm btn-danger"  data-toggle="tooltip" data-placement="bottom" title="Remover funcionário"> 
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

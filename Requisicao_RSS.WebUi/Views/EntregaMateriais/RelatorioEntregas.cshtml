@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col mt-5 mb-5 ml-5 text-center">
+        <h2 style="font-weight:lighter">Relatório de Entregas de Materiais</h2>
+        <hr style="width:30%;" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-6" style="margin: 0 auto;">
+        <form asp-action="VisualizarComoPDF" id="formData" name="formData" class="form-horizontal" target="_blank">
+            <input type="hidden" value="@ViewBag.FuncId" name="id" id="id" />
+            <div class="form-group">
+                <label for="dataInicio" class="col-sm-2 control-label">Data Inicio:</label>
+                <input type="date" class="form-control" id="dataInicio" name="dataInicio" required data-toggle="tooltip" data-placement="left" title="Data inical">
+            </div>
+            <div class="form-group">
+                <label for="dataFim" class="col-sm-2 control-label">Data Fim</label>
+                <input type="date" class="form-control" id="dataFim" name="dataFim" required data-toggle="tooltip" data-placement="left" title="Data final">
+            </div>
+            <div>
+
+                <span>@Html.ActionLink("Gerar Relatório","VisualizarComoPDF", "Fornecedores", null, new { target = "_blank" })</span> <a class="btn btn-danger" asp-controller="EntregaMateriais" asp-action="Details" asp-route-id="@ViewBag.FornecedorId">&nbsp;Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#formData').on('submit', function () {
+                alert('You submitted the form!');
+            });
+        });
+    </script>    
+
+}

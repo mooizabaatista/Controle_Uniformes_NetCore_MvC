@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "";
+}
+@model IEnumerable<Requisicao_RSS.Application.DTOs.RequisicaoDTO>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Relatório de Requisições</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-6">
+            <br />
+            <img src="~/images/logo.jpg" style="width:150px;margin-top:10px;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 ml-3 mt-3 text-center">
+            <h2>Relatório de Requisições</h2>
+            <br />
+            <h4><strong>@ViewData["NomeFuncionario"]</strong></h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center mt-3 ">
+            <span style="font-size:1.2em;">
+                Período: &nbsp; <strong>@ViewData["DataInicio"] à @ViewData["DataFim"]</strong>
+            </span>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col">
+
+            @foreach (var item in Model)
+            {
+                <table class="table table-bordered table-sm text-center" style="line-height:30px;">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Registro</th>
+                            <th>Nome</th>
+                            <th>Camiseta</th>
+                            <th>Calça</th>
+                            <th>Camisetas</th>
+                            <th>Calças</th>
+                            <th>Luvas</th>
+                            @if (item.Divergencia.ToString() == "Sim")
+                            {
+                                <th>Divergência</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                            <td>@item.Registro</td>
+                            <td>@item.Funcionario.Nome</td>
+                            <td>@item.TamanhoCamisa</td>
+                            <td>@item.TamanhoCalca</td>
+                            <td>@item.QuantidadeCamisa</td>
+                            <td>@item.QuantidadeCalca</td>
+                            <td>@item.QuantidadeLuva</td>
+                            @if (item.Divergencia == "Sim")
+                            {
+                                <td>@item.Observacoes</td>
+                            }
+                        </tr>
+
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</body>
+</html>

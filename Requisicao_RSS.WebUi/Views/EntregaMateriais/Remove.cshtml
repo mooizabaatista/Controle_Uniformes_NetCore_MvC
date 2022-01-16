@@ -1,0 +1,47 @@
+﻿<!-- Import model-->
+@model Requisicao_RSS.Application.DTOs.EntregaMaterialDTO
+<!-- Header -->
+<div class="row">
+    <div class="col-12 mt-3 mb-3">
+        <h2 class="text-danger" style="font-weight: 200">Deseja realmente remover?</h2>
+    </div>
+</div>
+
+<!-- Informações da entrega -->
+<div class="row">
+    <div class="col-12">
+        <strong>Tipo: </strong> @Model.Tipo
+    </div>
+    <div class="col-12">
+        <strong>Data: </strong> @Html.DisplayFor(c => c.Data)
+    </div>
+</div>
+
+<hr />
+
+<!-- Ações -->
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Remove">
+            <!-- Id fornecedor-->
+            <input type="hidden" asp-for="EntregaMaterialId" />
+            <input type="hidden" asp-for="FornecedorId" name="fornecedorId">
+
+            <div class="form-group d-flex justify-content-start">
+                <!-- Remover -->
+                <button type="submit" class="btn btn-danger d-flex align-items-center justify-content-around p-l-3  btn-acoes">
+                    <span class="mr-2">Remover</span>
+                    <i class="material-icons" style="font-size:16px;margin-top:3px;color:white;font-weight:600;">delete</i>
+                </button>
+
+                &nbsp;&nbsp;
+
+                <!-- Cancelar -->
+                <div class="btn btn-dark d-flex align-items-center btn-acoes">
+                    <a style="color:#fff;" asp-controller="Fornecedores" asp-action="ListaEntregas" asp-route-id="@Model.FornecedorId"><span class="mr-1">Cancelar</span></a>
+                    <i class="material-icons" style="font-size:16px;margin-top:3px;color:white;font-weight:600;">clear</i>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

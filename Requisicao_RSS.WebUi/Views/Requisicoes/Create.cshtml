@@ -1,0 +1,163 @@
+﻿<!--  Import model -->
+@model Requisicao_RSS.Application.DTOs.RequisicaoDTO
+<!--  Header -->
+<div class="row">
+    <div class="col-12 text-center mt-2 mb-1">
+        <h2 style="font-weight: 200">Cadastrar Requisição</h2>
+    </div>
+</div>
+
+<!-- Formulário de cadastro de requisicoes-->
+<form asp-action="Create" method="POST">
+    <div class="form-horizontal" style="width:70%; margin: 0 auto;">
+        <hr />
+        <!-- Funcionário ID-->
+        <input type="hidden" asp-for="FuncionarioId" class="form-control" value="@ViewBag.FuncionarioId" />
+
+        <!-- Exibe lista de erros de validações do formulário -->
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <!-- Registro -->
+                <div class="col-4">
+                    <label asp-for="Registro">Registro</label>
+                    <input asp-for="Registro" class="form-control text-center" value="@ViewBag.Registro" readonly style="font-weight:700;" />
+                </div>
+                <!-- Nome -->
+                <div class="col-4">
+                    <label>Nome</label>
+                    <input class="form-control text-center" value="@ViewBag.FuncionarioNome" readonly style="font-weight:700;" />
+                </div>
+                <!-- Função -->
+                <div class="col-4">
+                    <label>Função</label>
+                    <input class="form-control text-center" value="@ViewBag.FuncionarioFuncao" readonly name="funcao" id="funcao" style="font-weight:700;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <!-- Data -->
+                <div class="col-md-4">
+                    <label asp-for="Data">Data</label>
+                    <input asp-for="Data" type="date" class="form-control" id="data" name="data" />
+                </div>
+                <!-- Tamanho camiseta-->
+                <div class="col-md-4">
+                    <label asp-for="TamanhoCamisa">Tamanho Camiseta</label>
+                    <select class="form-control" asp-for="TamanhoCamisa" asp-items="(SelectList)ViewBag.TamanhosCamisa">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+                <!-- Tamanho calça-->
+                <div class="col-md-4">
+                    <label asp-for="TamanhoCalca">Tamanho Calça</label>
+                    <select class="form-control" asp-for="TamanhoCalca" asp-items="(SelectList)ViewBag.TamanhosCalca">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <!-- Quantidade Camisetas -->
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeCamisa">Quantidade Camisas</label>
+                    <input class="form-control" type="number" asp-for="QuantidadeCamisa" id="txtQtdCamisas" />
+                </div>
+                <!-- Quantidade Calças -->
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeCalca">Quantidade Calças</label>
+                    <input class="form-control" type="number" asp-for="QuantidadeCalca" />
+                </div>
+                <!-- Quantidade Luvas -->
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeLuva">Quantidade Luvas</label>
+                    <input class="form-control" type="number" asp-for="QuantidadeLuva" id="txtQtdLuvas" />
+                </div>
+            </div>
+        </div>
+
+        <!-- divergências -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <label asp-for="Divergencia">Houve Divergência?</label>
+                    <select class="form-control mt-2" asp-for="Divergencia" id="SelectDivergencia">
+                        <option value="">Selecione</option>
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-8">
+                    <label asp-for="Observacoes">Observações</label>
+                    <textarea style="resize: none;" id="txtObservacoes" class="form-control" TextMode="MultiLine" placeholder="Escreva aqui..." asp-for="Observacoes"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <!-- Açoes -->
+                <div class="col-12">
+                    <div class="d-flex">
+                        <!-- Cadastrar -->
+                        <button type="submit" class="btn btn-primary d-flex align-items-center btn-acoes btn-add">
+                            <span class="mr-1">Cadastrar</span>
+                            <i class="material-icons" style="font-size:15px;color:white;">add</i>
+                        </button>
+                        <!-- Cancelar -->
+                        <div class="btn btn-danger d-flex align-items-center btn-acoes ml-3">
+                            <a style="color:#fff;" asp-controller="Funcionarios" asp-action="Index"><span class="mr-1">Cancelar</span></a>
+                            <i class="material-icons" style="font-size:15px;color:white;">clear</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // Caso a função do funcionário seja motorista,
+            // a õpção de luvas será desabilitada.
+            var funcaoFuncionario = $("#funcao").val();
+
+            if (funcaoFuncionario == 'Motorista') {
+                $("#txtQtdLuvas").prop('readonly', true);
+                $("#txtQtdLuvas").val(0);
+                $("#txtData").focus();
+            }
+            else if (funcaoFuncionario == 'Coletor') {
+                $("#txtData").focus();
+            }
+        });
+
+
+        $(document).ready(function () {
+            $("#txtObservacoes").prop('readonly', true);
+
+            $("#SelectDivergencia").change(function () {
+                if ($(this).val() == 'Sim') {
+                    $("#txtObservacoes").prop('readonly', false);
+                } else if ($(this).val() == 'Não') {
+                    $("#txtObservacoes").prop('readonly', true);
+                } else if ($(this).val() == '') {
+                    $("#txtObservacoes").prop('readonly', true);
+                };
+            })
+        });
+    </script>
+}
+

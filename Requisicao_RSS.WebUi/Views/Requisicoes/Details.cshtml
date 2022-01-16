@@ -1,0 +1,34 @@
+﻿<!-- import model -->
+@model Requisicao_RSS.Application.DTOs.RequisicaoDTO
+<!-- header -->
+<div class="row">
+    <div class="col-12 mt-3 mb-2">
+        <h3 style="font-weight: 100;">Detalhes da Requisição</h3>
+    </div>
+    <div class="col-3 col-md-1 mb-4">
+        <a asp-controller="Funcionarios" asp-action="Details" asp-route-id="@Model.FuncionarioId" class="d-flex align-items-center justify-content-center btn btn-primary btn-sm "><i class="material-icons" style="font-size:15px;color:#fff;">arrow_back_ios</i>Voltar</a>
+    </div>
+</div>
+
+<!-- Conteúdo -->
+<div class="row">
+    <div class="col-12">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Data </strong>@Html.DisplayFor(c => c.Data)</li>
+            <li class="list-group-item"><strong>Registro: </strong> @Html.DisplayFor(c => c.Registro)</li>
+            <li class="list-group-item"><strong>Nome: </strong>@ViewBag.FuncionarioNome</li>
+            <li class="list-group-item"><strong>Tamanho Camiseta: </strong>@Html.DisplayFor(c => c.TamanhoCamisa)</li>
+            <li class="list-group-item"><strong>Tamanho Calça: </strong>@Html.DisplayFor(c => c.TamanhoCalca)</li>
+            <li class="list-group-item"><strong>Quantidade Camisetas: </strong> @Html.DisplayFor(c => c.QuantidadeCamisa)</li>
+            <li class="list-group-item"><strong>Quantidade Calças: </strong> @Html.DisplayFor(c => c.QuantidadeCalca)</li>
+            <li class="list-group-item"><strong>Quantidade Luvas: </strong> @Html.DisplayFor(c => c.QuantidadeLuva)</li>
+            <li class="list-group-item"><strong>Divergência: </strong> @Html.DisplayFor(c => c.Divergencia)</li>
+
+            @if (Model.Divergencia == "Sim")
+            {
+                <li class="list-group-item text-danger"><strong>Observações: </strong>@Html.DisplayFor(c => c.Observacoes)</li>
+
+            }
+        </ul>
+    </div>
+</div>

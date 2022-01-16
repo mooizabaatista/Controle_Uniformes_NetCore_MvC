@@ -1,0 +1,101 @@
+﻿
+
+<div class="container">
+    <div class="row">
+        <!-- Estatísticas Camisetas-->
+        <div class="col-12 mt-3 mb-5 text-center">
+            <h3 style="font-weight:100; letter-spacing:5px;" class="mb-3">Camisetas</h3>
+            <hr style="width:50%;" />
+            <canvas id="myChart" width="300" height="55"></canvas>
+        </div>
+        <!-- Estatísticas Calças-->
+        <div class="col-12 mt-1 text-center">
+            <h3 style="font-weight:100; letter-spacing:5px;" class="mb-3">Calças</h3>
+            <hr style="width:50%;" />
+            <canvas id="myChartCalcas" width="300" height="55"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@section Scripts {
+    <!-- Script Gráfico Camisetas-->
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Camisa P', 'Camisa M', 'CamisaG', 'Camisa GG', 'Camisa XG'],
+                datasets: [{
+                    label: 'Estatísticas Camisetas',
+                    data: [@ViewBag.QtdCamisaP, @ViewBag.QtdCamisaM, @ViewBag.QtdCamisaG, @ViewBag.QtdCamisaGG, @ViewBag.QtdCamisaXG],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 0.5
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Script Gráfico Calças-->
+    <script>
+        var ctx = document.getElementById('myChartCalcas');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Calça P', 'Calça M', 'Calça G', 'Calça GG', 'Calça XG'],
+                datasets: [{
+                    label: 'Estatísticas Calças',
+                    data: [@ViewBag.QtdCalcaP, @ViewBag.QtdCalcaM, @ViewBag.QtdCalcaG, @ViewBag.QtdCalcaGG, @ViewBag.QtdCalcaXG],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 0.5
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
+
+

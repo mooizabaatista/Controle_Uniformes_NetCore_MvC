@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Requisicao_RSS.Application\Requisicao_RSS.Application.csproj" />
+    <ProjectReference Include="..\Requisicao_RSS.Domain\Requisicao_RSS.Domain.csproj" />
+    <ProjectReference Include="..\Requisicao_RSS.Infra.Data\Requisicao_RSS.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

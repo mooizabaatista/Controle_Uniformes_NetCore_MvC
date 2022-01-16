@@ -1,0 +1,60 @@
+﻿<!-- Import model-->
+@model Requisicao_RSS.Application.DTOs.FornecedorDTO
+<!-- Header-->
+<div class="row">
+    <div class="col-12 text-center mt-3 mb-3">
+        <h2 style="font-weight: 200">Editar Fornecedor</h2>
+    </div>
+</div>
+
+<!-- Formulário de edição de fornecedor -->
+<form asp-action="Edit" method="POST" style="width:70%; margin: 0 auto;">
+    <hr />
+
+    <!-- Exibe lista de erros de validações do formulário -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Id fornecedor -->
+    <input type="hidden" asp-for="FornecedorId" value="@Model.FornecedorId" />
+
+    <div class="form-group">
+        <div class="row">
+            <!-- Nome -->
+            <div class="col-md-7">
+                <label asp-for="Nome">Nome</label>
+                <input asp-for="Nome" class="form-control" />
+            </div>
+            <!-- Telefone -->
+            <div class="col-md-5">
+                <label asp-for="Telefone">Telefone</label>
+                <input asp-for="Telefone" class="form-control" placeholder="(xx)xxxxx-xxxx" id="txtTelefone" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Cnpj -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <label asp-for="CNPJ">CNPJ</label>
+                <input asp-for="CNPJ" class="form-control" id="txtCNPJ" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-start">
+                <button type="submit" class="btn btn-primary d-flex btn-acoes btn-add">
+                    <span class="mr-1">Editar</span>
+                    <i class="material-icons" style="font-size:15px;color:white;">edit</i>
+                </button>
+                <div class="btn btn-danger d-flex btn-acoes ml-3">
+                    <a style="color:#fff;" asp-action="Index"><span class="mr-1">Cancelar</span></a>
+                    <i class="material-icons" style="font-size:15px;color:white;">clear</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

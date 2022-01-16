@@ -1,0 +1,48 @@
+﻿<!-- Import model -->
+@model Requisicao_RSS.Application.DTOs.FornecedorDTO
+<!-- Header -->
+<div class="row">
+    <div class="col-12 mt-3">
+        <h2 class="text-danger" style="font-weight: 200">Deseja realmente remover?</h2>
+    </div>
+</div>
+
+<hr />
+
+<!-- Informações do fornecedor -->
+<div class="row">
+    <div class="col-12">
+        <strong>Nome: </strong> @Model.Nome
+    </div>
+    <div class="col-12">
+        <strong>CNPJ: </strong> @Model.CNPJ
+    </div>
+
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Remove">
+            <!-- Id fornecedor -->
+            <input type="hidden" asp-for="FornecedorId" />
+
+            <div class="form-group d-flex justify-content-start">
+                <!-- Remover -->
+                <button type="submit" class="btn btn-danger d-flex align-items-center justify-content-around p-l-3  btn-acoes">
+                    <span class="mr-2">Remover</span>
+                    <i class="material-icons" style="font-size:15px;color:white;">delete</i>
+                </button>
+
+                &nbsp;&nbsp;
+
+                <!-- Cancelar -->
+                <div class="btn btn-dark d-flex align-items-center btn-acoes">
+                    <a style="color:#fff;" asp-action="Index"><span class="mr-1">Cancelar</span></a>
+                    <i class="material-icons" style="font-size:15px;color:white;">clear</i>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

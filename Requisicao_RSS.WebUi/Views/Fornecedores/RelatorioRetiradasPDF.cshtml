@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "";
+}
+
+@model IEnumerable<Requisicao_RSS.Application.DTOs.RetiradaMaterialDTO>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Relatório de Retiradas</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+
+    <div class="row">
+        <div class="col-6">
+            <br />
+            <img src="~/images/logo.jpg" style="width:150px;margin-top:10px;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 ml-3 mt-3 text-center">
+            <h2>Relatório de retirada de materiais</h2>
+            <br />
+            <h4><strong>@ViewData["NomeFornecedor"]</strong></h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center mt-3 ">
+            <span style="font-size:1.2em;">
+                Período: &nbsp; <strong>@ViewData["DataInicio"] à @ViewData["DataFim"]</strong>
+            </span>
+        </div>
+    </div>
+    <br /><br />
+
+
+    @foreach (var item in Model)
+    {
+        <table class="table table-bordered table-sm text-center">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Tipo de material</th>
+                    <th>N° Camisetas</th>
+                    <th>N° Calças</th>
+                    @if (item.Tipo == "Luva")
+                    {
+                        <th>N° Luvas</th>
+
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomeFornecedor)</td>
+                    <td>@item.Tipo</td>
+                    <td>@item.QuantidadeCamisas</td>
+                    <td>@item.QuantidadeCalcas</td>
+                    @if (item.Tipo == "Luva")
+                    {
+                        <td>@item.QuantidadeLuvas</td>
+
+                    }
+
+                </tr>
+            </tbody>
+        </table>
+    }
+
+
+
+</body>
+
+
+</html>
+
+
+
+

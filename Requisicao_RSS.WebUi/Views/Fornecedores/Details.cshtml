@@ -1,0 +1,38 @@
+﻿<!-- Import model -->
+@model Requisicao_RSS.Application.DTOs.FornecedorDTO
+<!-- Header-->
+<div class="row">
+    <div class="col-12 mt-3 mb-3 text-center">
+        <h2 style="font-weight: 200">Detalhes @Model.Nome</h2>
+        <hr style="width:30%;" />
+    </div>
+</div>
+
+
+
+<!-- Ações -->
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <a asp-controller="EntregaMateriais" asp-action="Create" asp-route-id="@Model.FornecedorId" class="btn btn-primary d-flex justify-content-center">
+                <span>Cadastrar Entrega</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a asp-controller="RetiradaMateriais" asp-action="Create" asp-route-id="@Model.FornecedorId" class="btn btn-primary d-flex justify-content-center">
+                <span>Cadastrar Retirada</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a asp-action="ListaEntregas" asp-route-id="@Model.FornecedorId" class="btn btn-primary d-flex justify-content-center">
+                <span>Lista de Entregas</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a asp-action="ListaRetiradas" asp-route-id="@Model.FornecedorId" class="btn btn-primary d-flex justify-content-center">
+                <span>Lista de Retiradas</span>
+            </a>
+        </div>
+    </div>
+
+</div>

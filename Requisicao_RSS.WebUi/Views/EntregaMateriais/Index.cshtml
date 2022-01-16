@@ -1,0 +1,113 @@
+﻿<!-- import mod@using X.PagedList
+@using X.PagedList.Mvc.Bootstrap4.Core
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model X.PagedList.PagedList<Requisicao_RSS.Application.DTOs.EntregaMaterialDTO>
+<!-- header -->
+<div class="row">
+    <div class="col-12 mt-3">
+        <h2 style="font-weight: 200">Entrada de materiais</h2>
+    </div>
+</div>
+<hr />
+<!-- formulário para filtrar as entregas por data -->
+<div class="row">
+    <div class="col-3 mt-3">
+        @using (Html.BeginForm("GetDataEntregas", "EntregaMateriais", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-10">
+                    <input class="form-control" type="date" id="data" name="data">
+                </div>
+                <div class="col-2">
+                    <input class="btn btn-primary" type="submit" value="Filtrar">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />
+
+
+@if (ViewBag.xCondition != 1)
+{
+    <div class="row">
+        <div class="col-12">
+
+            <span class="font-weight-light">Página @Model.PageNumber de @Model.PageCount</span>
+            <div class="mt-2">
+                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }.ApplyBootstrap4Style())
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+<!-- tabela com as informações das entregas -->
+<div class="row">
+    <div class="col-12 mt-3">
+        <div class="panel table-responsive">
+            <table class="table table-bordered table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        @if (Model.Any(c => c.Tipo == "Uniforme"))
+                        {
+                            <th>Quantidade Camisas</th>
+                            <th>Quantidade Calças</th>
+                        }
+                        @if (Model.Any(c => c.Tipo == "Luva"))
+                        {
+                            <th>Quantidade Luvas</th>
+                        }
+                        <th>Divergência</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NomeFornecedor)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                            @if (Model.Any(c => c.Tipo == "Uniforme"))
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.QuantidadeCamisas)</td>
+                                <td>@Html.DisplayFor(modelItem => item.QuantidadeCalcas)</td>
+                            }
+                            @if (Model.Any(c => c.Tipo == "Luva"))
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.QuantidadeLuvas)</td>
+                            }
+                            <td>@Html.DisplayFor(modelItem => item.Divergencia)</td>
+
+                            <!-- Ações -->
+                            <td>
+                                <!-- Detalhes da entrega -->
+                                <a asp-action="Details" asp-route-id="@item.EntregaMaterialId" class="btn btn-sm btn-info">
+                                    <i class="material-icons">feed</i>
+                                </a>
+                                <!-- Editar entrega -->
+                                <a asp-action="Edit" asp-route-id="@item.EntregaMaterialId" class="btn btn-sm btn-dark">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <!-- Remover entrega -->
+                                <a asp-action="Remove" asp-route-id="@item.EntregaMaterialId" class="btn btn-sm btn-danger">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

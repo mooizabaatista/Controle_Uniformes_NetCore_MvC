@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "";
+}
+
+@model IEnumerable<Requisicao_RSS.Application.DTOs.EntregaMaterialDTO>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Relatório de Entregas</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+
+    <div class="row">
+        <div class="col-6">
+            <br />
+            <img src="~/images/logo.jpg" style="width:150px;margin-top:10px;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 ml-3 mt-3 text-center">
+            <h4>Relatório de entrega de materiais</h4>
+            <br />
+            <h5><strong>@ViewData["NomeFornecedor"]</strong></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center mt-3 ">
+            <span style="font-size:1.2em;">
+                Período: &nbsp; <strong>@ViewData["DataInicio"] à @ViewData["DataFim"]</strong>
+            </span>
+        </div>
+    </div>
+    <br /><br />
+
+
+    @foreach (var item in Model)
+    {
+        <table class="table table-bordered table-sm text-center">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    @if (item.Tipo != "Luva")
+                    {
+                        <th>Camisetas</th>
+                        <th>Calças</th>
+                    }
+                    @if (item.QuantidadeLuvas != 0)
+                    {
+                        <th>Luvas</th>
+
+                    }
+                    @if (item.Divergencia == "Sim")
+                    {
+                        <th style="color:red;font-weight:700;">Divergência</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomeFornecedor)</td>
+                    <td>@item.Tipo</td>
+                    @if (item.Tipo != "Luva")
+                    {
+                        <td>@item.QuantidadeCamisas</td>
+                        <td>@item.QuantidadeCalcas</td>
+                    }
+                    @if (item.QuantidadeLuvas != 0)
+                    {
+                        <td>@item.QuantidadeLuvas</td>
+
+                    }
+                    @if (item.Divergencia == "Sim")
+                    {
+                        <td style="color:red;">@item.Observacoes</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    }
+
+
+
+</body>
+
+
+</html>
+
+
+
+

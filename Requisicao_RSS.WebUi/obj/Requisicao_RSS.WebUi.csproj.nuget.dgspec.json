@@ -1,0 +1,397 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.WebUi\\Requisicao_RSS.WebUi.csproj": {}
+  },
+  "projects": {
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\Requisicao_RSS.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\Requisicao_RSS.Application.csproj",
+        "projectName": "Requisicao_RSS.Application",
+        "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\Requisicao_RSS.Application.csproj",
+        "packagesPath": "C:\\Users\\MoisesAlice\\.nuget\\packages\\",
+        "outputPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MoisesAlice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj",
+        "projectName": "Requisicao_RSS.Domain",
+        "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj",
+        "packagesPath": "C:\\Users\\MoisesAlice\\.nuget\\packages\\",
+        "outputPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MoisesAlice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\Requisicao_RSS.Infra.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\Requisicao_RSS.Infra.Data.csproj",
+        "projectName": "Requisicao_RSS.Infra.Data",
+        "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\Requisicao_RSS.Infra.Data.csproj",
+        "packagesPath": "C:\\Users\\MoisesAlice\\.nuget\\packages\\",
+        "outputPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MoisesAlice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\Requisicao_RSS.Infra.IoC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\Requisicao_RSS.Infra.IoC.csproj",
+        "projectName": "Requisicao_RSS.Infra.IoC",
+        "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\Requisicao_RSS.Infra.IoC.csproj",
+        "packagesPath": "C:\\Users\\MoisesAlice\\.nuget\\packages\\",
+        "outputPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MoisesAlice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\Requisicao_RSS.Application.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Application\\Requisicao_RSS.Application.csproj"
+              },
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Domain\\Requisicao_RSS.Domain.csproj"
+              },
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\Requisicao_RSS.Infra.Data.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.Data\\Requisicao_RSS.Infra.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.WebUi\\Requisicao_RSS.WebUi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.WebUi\\Requisicao_RSS.WebUi.csproj",
+        "projectName": "Requisicao_RSS.WebUi",
+        "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.WebUi\\Requisicao_RSS.WebUi.csproj",
+        "packagesPath": "C:\\Users\\MoisesAlice\\.nuget\\packages\\",
+        "outputPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.WebUi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MoisesAlice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\Requisicao_RSS.Infra.IoC.csproj": {
+                "projectPath": "C:\\Requisicao_RSS\\Requisicao_RSS\\Requisicao_RSS.Infra.IoC\\Requisicao_RSS.Infra.IoC.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            },
+            "Rotativa.AspNetCore": {
+              "target": "Package",
+              "version": "[1.2.0-beta, )"
+            },
+            "X.PagedList": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "X.PagedList.Mvc.Bootstrap4": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

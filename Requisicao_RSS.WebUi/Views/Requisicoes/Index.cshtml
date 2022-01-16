@@ -1,0 +1,99 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Bootstrap4.Core
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model X.PagedList.PagedList<Requisicao_RSS.Application.DTOs.RequisicaoDTO>
+
+
+
+
+<div class="row">
+    <div class="col-12 mt-3">
+        <h2 style="font-weight: 200">Requisições</h2>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-3 mt-3">
+        @using (Html.BeginForm("GetDataRequisicao", "Requisicoes", FormMethod.Post, null))
+        {
+
+            <div class="row">
+                <div class="col-10">
+                    <input class="form-control" type="date" id="data" name="data">
+                </div>
+                <div class="col-2">
+                    <input class="btn btn-primary" type="submit" value="Filtrar">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />
+
+@if (ViewBag.xCondition != 1)
+{
+    <div class="row">
+        <div class="col-12">
+
+            <span class="font-weight-light">Página @Model.PageNumber de @Model.PageCount</span>
+            <div class="mt-2">
+                @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }.ApplyBootstrap4Style())
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+<div class="row">
+    <div class="col-12 mt-3">
+        <div class="panel table-responsive">
+            <table class="table table-bordered table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Registro</th>
+                        <th>Nome</th>
+                        <th>Tamanho Camiseta</th>
+                        <th>Tamanho Calça</th>
+                        <th>Qtd Camisetas</th>
+                        <th>Qtd Calças</th>
+                        <th>Qtd Luvas</th>
+                        @*<th>Ações</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Funcionario.Registro)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Funcionario.Nome)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TamanhoCamisa)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TamanhoCalca)</td>
+                            <td>@Html.DisplayFor(modelItem => item.QuantidadeCamisa)</td>
+                            <td>@Html.DisplayFor(modelItem => item.QuantidadeCalca)</td>
+                            <td>@Html.DisplayFor(modelItem => item.QuantidadeLuva)</td>
+
+                            @*<td class="d-flex justify-content-center text-center">
+                                <a asp-action="Edit" asp-route-id="@item.RequisicaoId" class="btn btn-sm btn-primary mr-2">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a asp-action="Remove" asp-route-id="@item.RequisicaoId" class="btn btn-sm btn-danger">
+                                    <i class="material-icons">delete</i>
+                                </a>
+
+                            </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

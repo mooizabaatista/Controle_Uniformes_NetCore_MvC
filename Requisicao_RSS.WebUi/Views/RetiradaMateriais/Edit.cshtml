@@ -1,0 +1,145 @@
+﻿@model Requisicao_RSS.Application.DTOs.RetiradaMaterialDTO
+
+<div class="row">
+    <div class="col-12 text-center mt-3 mb-3">
+        <h2 style="font-weight: 200">Editar Retirada de Material</h2>
+        <h3 style="font-weight: 200">@Model.NomeFornecedor</h3>
+    </div>
+</div>
+<form asp-action="Edit" method="POST">
+    <div class="form-horizontal" style="width:50%; margin: 0 auto;">
+        <hr />
+
+        <input type="hidden" asp-for="FornecedorId" class="form-control" value="@Model.FornecedorId" />
+        <input type="hidden" asp-for="RetiradaMaterialId" class="form-control" value="@Model.RetiradaMaterialId" />
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label asp-for="NomeFornecedor">Nome</label>
+                    <input asp-for="NomeFornecedor" type="text" class="form-control text-center" value="@Model.NomeFornecedor" readonly />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Data">Data</label>
+                    <input asp-for="Data" type="date" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Tipo">Tipo de material entregue</label>
+                    <select class="form-control" asp-for="Tipo" id="SelectTipo">
+                        <option value="">Selecione</option>
+                        <option>Uniforme</option>
+                        <option>Luva</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeCamisas">Quantidade de Camisas</label>
+                    <input type="text" asp-for="QuantidadeCamisas" class="form-control" id="txtQtdCamisas" />
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeCalcas">Quantidade de Calças</label>
+                    <input type="text" asp-for="QuantidadeCalcas" class="form-control" id="txtQtdCalcas" />
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="QuantidadeLuvas">Quantidade de Luvas</label>
+                    <input type="text" asp-for="QuantidadeLuvas" class="form-control" id="txtQtdLuvas" />
+                </div>
+            </div>
+        </div>
+
+
+        <!-- divergências -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Divergencia">Houve Divergência?</label>
+                    <select class="form-control mt-2" asp-for="Divergencia" id="SelectDivergencia">
+                        <option value="">Selecione</option>
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-8">
+                    <label asp-for="Observacoes">Observações</label>
+                    <textarea style="resize: none;" id="txtObservacoes" class="form-control" TextMode="MultiLine" placeholder="Escreva aqui..." asp-for="Observacoes"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="col-md-4 d-flex justify-content-start">
+                        <button type="submit" class="btn btn-primary d-flex btn-acoes">
+                            <span class="mr-1">Editar</span>
+                            <i class="material-icons" style="font-size:15px;color:white;">edit</i>
+                        </button>
+                        <div class="btn btn-danger d-flex btn-acoes ml-3">
+                            <a style="color:#fff;" asp-controller="Fornecedores" asp-action="ListaRetiradas" asp-route-id="@Model.FornecedorId"><span class="mr-1">Cancelar</span></a>
+                            <i class="material-icons" style="font-size:15px;color:white;">clear</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+
+        $('#SelectTipo').change(function () {
+            if ($(this).val() == 'Uniforme') {
+                $("#txtQtdLuvas").val(0);
+                $("#txtQtdCamisas").val('');
+                $("#txtQtdCalcas").val('');
+                $("#txtQtdCalcas").prop('readonly', false);
+                $("#txtQtdCamisas").prop('readonly', false);
+                $("#txtQtdLuvas").prop('readonly', true);
+                $("#txtQtdCamisas").focus();
+
+
+            } else if ($(this).val() == 'Luva') {
+                $("#txtQtdLuvas").prop('readonly', false);
+                $("#txtQtdLuvas").val('');
+                $("#txtQtdLuvas").focus();
+                $("#txtQtdCamisas").val(0);
+                $("#txtQtdCalcas").val(0);
+                $("#txtQtdCamisas").prop('readonly', true);
+                $("#txtQtdCalcas").prop('readonly', true);
+                $("#txtQtdLuvas").focus();
+            };
+        });
+
+        $(document).ready(function () {
+
+            $("#txtObservacoes").prop('readonly', true);
+
+            $("#SelectDivergencia").change(function () {
+                if ($(this).val() == 'Sim') {
+                    $("#txtObservacoes").prop('readonly', false);
+                } else if ($(this).val() == 'Não') {
+                    $("#txtObservacoes").prop('readonly', true);
+                } else if ($(this).val() == '') {
+                    $("#txtObservacoes").prop('readonly', true);
+                };
+            })
+        });
+
+
+    </script>
+};
